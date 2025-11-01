@@ -1013,9 +1013,9 @@
 
         // Funções do QR Code - Usando QR Server API
         function generateQRCode() {
-            // Obter URL base
+            // Obter URL base e construir URL para question/index.html
             const currentURL = window.location.origin + window.location.pathname;
-            const questionPageURL = currentURL.replace('audit/audit.html', 'question/question.html').replace(/\/$/, '');
+            const questionPageURL = currentURL.replace('audit/index.html', 'question/index.html').replace(/\/$/, '');
 
             qrUrlDisplay.textContent = questionPageURL;
 
