@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perguntas Anônimas - Vigília</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Logo */
+        .logo-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .logo-section img {
+            max-width: 120px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            /* Substituir src com logo real da igreja */
+        }
+
+        /* Banner da Vigília */
+        .banner {
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Substituir com imagem real ou ajustar design conforme necessário */
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-text {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Título */
+        .title {
+            text-align: center;
+            font-size: clamp(32px, 8vw, 56px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            /* 
+               Sugestões alternativas:
+               - "Pergunta da Vigília"
+               - "Fale com o Pastor — anônimo"
+               - "Sua pergunta importa"
+            */
+        }
+
+        /* Formulário */
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Botão */
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 24px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+        }
+
+        button:focus {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Status Message */
+        .status-message {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            min-height: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .status-message.success {
+            color: rgba(144, 238, 144, 0.8);
+        }
+
+        .status-message.error {
+            color: rgba(255, 127, 127, 0.8);
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .container {
+                gap: 20px;
+            }
+
+            button {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo da Igreja -->
+        <div class="logo-section">
+            <img src="../assets/logoPimImperialBlack.jpg" alt="Logo da Igreja" />
+            <!-- Substituir src com URL/caminho da logo real -->
+        </div>
+
+        <!-- Banner da Vigília -->
+        <div class="banner">
+            <img src="../assets/banner.jpg" alt="Banner da Vigília">
+            <!-- Substituir com imagem ou conteúdo específico -->
+        </div>
+
+        <!-- Título -->
+        <h2 class="title">Responde essa, Pastor!</h2>
+
+        <!-- Formulário -->
+        <form class="form-section" id="perguntasForm">
+            <textarea id="perguntaTextarea" placeholder="Digite sua pergunta aqui..."
+                aria-label="Campo para digitar pergunta anônima"></textarea>
+
+            <div class="button-container">
+                <button type="submit">Enviar Pergunta</button>
+            </div>
+
+            <div class="status-message" id="statusMessage" aria-live="polite" aria-atomic="true"></div>
+        </form>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCPfuSryv9JP7RO7L3SNibBQe2IsuEV3sg",
+            authDomain: "anonymous-5b676.firebaseapp.com",
+            databaseURL: "https://anonymous-5b676-default-rtdb.firebaseio.com",
+            projectId: "anonymous-5b676",
+            storageBucket: "anonymous-5b676.firebasestorage.app",
+            messagingSenderId: "335205320721",
+            appId: "1:335205320721:web:8a2f635d2f9097f5b309b0",
+            measurementId: "G-9GPXN38Y9H"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const form = document.getElementById('perguntasForm');
+        const textarea = document.getElementById('perguntaTextarea');
+        const statusMessage = document.getElementById('statusMessage');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const pergunta = textarea.value.trim();
+
+            // Validação
+            if (!pergunta) {
+                showStatus('Por favor, escreva sua pergunta antes de enviar.', 'error');
+                return;
+            }
+
+            // Enviar para Firebase
+            const novaPerguntaRef = firebase.database().ref("perguntas").push();
+
+            novaPerguntaRef.set({
+                texto: pergunta,
+                createdAt: Date.now(),
+                exibida: false
+            })
+                .then(() => {
+                    // Limpar textarea
+                    textarea.value = '';
+                    // Mostrar mensagem de sucesso
+                    showStatus('Pergunta enviada com sucesso!', 'success');
+                    // Limpar mensagem após 3 segundos
+                    setTimeout(() => {
+                        statusMessage.textContent = '';
+                        statusMessage.className = 'status-message';
+                    }, 3000);
+                })
+                .catch(err => {
+                    showStatus('Erro ao enviar pergunta. Tente novamente.', 'error');
+                    console.error(err);
+                });
+        });
+
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type}`;
+        }
+
+        // Focus no textarea ao carregar página
+        textarea.focus();
+    </script>
+</body>
+
+</html>
